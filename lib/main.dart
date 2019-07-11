@@ -22,20 +22,36 @@ class HalamanSatu extends StatelessWidget {
           new Icon(Icons.sentiment_dissatisfied )
         ],
       ),
-      body: Center(
-        child: new Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const RaisedButton(
-            onPressed: null,
-            child: Text(
-              'Disabled',
-              style: TextStyle(fontSize: 20),
+      body: new Container(
+        child: new Column (
+          children: <Widget>[
+            new Icon(Icons.sentiment_very_dissatisfied, size: 100),
+            new Row(
+              children: <Widget>[
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+              ],
             ),
-          )
-        ],
+            new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.green[300]),
+          ],
+        )
       ),
-    ),
+      // body: Center(
+      //     child: new Column(
+      //     mainAxisSize: MainAxisSize.min,
+      //     children: <Widget>[
+      //       const RaisedButton(
+      //         onPressed: null,
+      //         child: Text(
+      //           'Disabled',
+      //           style: TextStyle(fontSize: 20),
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }
