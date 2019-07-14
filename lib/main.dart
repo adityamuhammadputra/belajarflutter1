@@ -29,46 +29,54 @@ class HalamanSatu extends StatelessWidget {
             new Row(
               children: <Widget>[
                 new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.blue),
                 new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
-                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
-                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.red),
+                new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.blue),
               ],
             ),
             new Icon(Icons.sentiment_very_dissatisfied, size: 100, color: Colors.green[300]),
+            new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+                // padding : new EdgeInsets.all(10.0),
+              children:<Widget>[
+                MyCard(icon:Icons.home, text: 'Home', warnaIcon:Colors.blue),
+                MyCard(icon:Icons.sim_card, text: 'gsm', warnaIcon:Colors.red)
+              ] 
+            )
           ],
-        )
+        ),
       ),
-      // body: Center(
-      //     child: new Column(
-      //     mainAxisSize: MainAxisSize.min,
-      //     children: <Widget>[
-      //       const RaisedButton(
-      //         onPressed: null,
-      //         child: Text(
-      //           'Disabled',
-      //           style: TextStyle(fontSize: 20),
-      //         ),
-      //       )
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
-// void main() {
-//   runApp(new MaterialApp(
-//     home: new HalHallo(),
-//   ));
-// }
 
- 
-// class HalHallo extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       body: Center(
-//         child : new Text('hello akhirat yuhuuuu'),
-//       )
-//     );
-//   }
-// }
+
+
+class MyCard extends StatelessWidget {
+  // const MyCard({Key key}) : super(key: key);
+MyCard({this.icon, this.text, this.warnaIcon});
+final IconData icon;
+final String text;
+final Color warnaIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    padding: new EdgeInsets.all(5),
+      child: new Card(
+        child: 
+          new Column(
+            children: <Widget>[
+              new Icon(icon, size: 50, color: warnaIcon,),
+              new Text(text,style: new TextStyle(fontSize: 20.0),),
+              new IconButton(
+                icon: new Icon(Icons.headset),
+                onPressed: null,
+              )
+
+            ],
+          )
+      )
+    );
+  }
+}
