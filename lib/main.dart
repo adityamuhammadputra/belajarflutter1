@@ -4,6 +4,10 @@ void main() {
   runApp(new MaterialApp(
     title: "Adityamuhammadputra",
     home: new HalamanSatu(),
+    routes: <String, WidgetBuilder>{
+      '/HalamanSatu' : (BuildContext context) => new HalamanSatu(),
+      '/HalDua' :(BuildContext context) => new HalDua(),
+    }
   ));
 }
 
@@ -71,12 +75,33 @@ final Color warnaIcon;
               new Text(text,style: new TextStyle(fontSize: 20.0),),
               new IconButton(
                 icon: new Icon(Icons.headset),
-                onPressed: null,
-              )
+                onPressed: (){
+                  Navigator.pushNamed(context, '/HalDua');
+                },
+              ) 
 
             ],
           )
       )
+    );
+  }
+}
+
+class HalDua extends StatelessWidget {
+  // const HalDua({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text('Halaman dua'),),
+      body: new Center(
+        child: new IconButton(
+          icon: new Icon(Icons.backspace),
+          onPressed: (){
+            Navigator.pushNamed(context, '/HalamanSatu');
+          },
+        ),
+      ),
     );
   }
 }
