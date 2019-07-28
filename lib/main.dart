@@ -3,6 +3,9 @@ import './hal_hp.dart' as hp;
 import './hal_komputer.dart' as  komputer;
 import './hal_bintang.dart' as  bintang;
 import './hal_headset.dart' as  headset;
+import './hal_dua.dart';
+import './hal_empat.dart';
+import './hal_lima.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -12,6 +15,8 @@ void main() {
       '/HalamanSatu' : (BuildContext context) => new HalamanSatu(),
       '/HalDua' :(BuildContext context) => new HalDua(),
       '/HalTiga' :(BuildContext context) => new HalTiga(),
+      '/HalEmpat' :(BuildContext context) => new HalEmpat(data: new List<String>.generate(10, (i)=>"ini data ke $i"),),
+      '/HalLima' :(BuildContext context) => new HalLima(),
     }
   ));
 }
@@ -93,8 +98,10 @@ class HalamanSatu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
                 // padding : new EdgeInsets.all(10.0),
               children:<Widget>[
-                MyCard(icon:Icons.home, text: 'Home', warnaIcon:Colors.blue),
-                MyCard(icon:Icons.sim_card, text: 'gsm', warnaIcon:Colors.red)
+                MyCard(icon:Icons.home, text: 'Home', warnaIcon:Colors.blue, linkhalaman: '/HalDua',),
+                MyCard(icon:Icons.sim_card, text: 'gsm', warnaIcon:Colors.red, linkhalaman: '/HalTiga',),
+                MyCard(icon:Icons.bluetooth, text: 'bluetot', warnaIcon:Colors.greenAccent, linkhalaman: '/HalEmpat',),
+                MyCard(icon:Icons.bluetooth, text: 'bluetot', warnaIcon:Colors.greenAccent, linkhalaman: '/HalLima',)
               ] 
             )
           ],
@@ -108,10 +115,11 @@ class HalamanSatu extends StatelessWidget {
 
 class MyCard extends StatelessWidget {
   // const MyCard({Key key}) : super(key: key);
-MyCard({this.icon, this.text, this.warnaIcon});
+MyCard({this.icon, this.text, this.warnaIcon, this.linkhalaman});
 final IconData icon;
 final String text;
 final Color warnaIcon;
+final String linkhalaman;
 
   @override
   Widget build(BuildContext context) {
@@ -121,14 +129,14 @@ final Color warnaIcon;
         child: 
           new Column(
             children: <Widget>[
-              new Icon(icon, size: 50, color: warnaIcon,),
-              new Text(text,style: new TextStyle(fontSize: 20.0),),
               new IconButton(
-                icon: new Icon(Icons.headset),
+                icon: new Icon(icon, size: 40, color: warnaIcon,),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/HalDua');
+                  Navigator.pushNamed(context, linkhalaman);
                 },
-              ) 
+              ),
+              new Text(text,style: new TextStyle(fontSize: 10.0),),
+              
 
             ],
           )
@@ -136,42 +144,6 @@ final Color warnaIcon;
     );
   }
 }
-
-class HalDua extends StatelessWidget {
-  // const HalDua({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text('Halaman dua'),),
-      body: new Center(
-        child: new IconButton(
-          icon: new Icon(Icons.backspace),
-          onPressed: (){
-            Navigator.pushNamed(context, '/HalamanSatu');
-          },
-        ),
-      ),
-    );
-  }
-}
-
-// class HalTiga extends StatelessWidget {
-//   // const HalTiga({Key key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       appBar: new AppBar(
-//           backgroundColor: Colors.red,
-//           title: new Text('Halaman Tiga'),
-//           bottom: new TabBar(
-             
-//           ),
-//         )
-//     );
-//   }
-// }
 
 class HalTiga extends StatefulWidget {
   @override
